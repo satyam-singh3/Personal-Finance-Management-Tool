@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { BudgetComparison } from '@/lib/types';
+import type { BudgetComparison } from '@/lib/types';
 import { formatCurrency } from '@/lib/finance-utils';
 import { Target, AlertTriangle, CheckCircle } from 'lucide-react';
 

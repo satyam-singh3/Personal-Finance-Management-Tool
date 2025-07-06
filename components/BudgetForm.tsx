@@ -6,7 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Budget, EXPENSE_CATEGORIES } from '@/lib/types';
+import type { Budget } from '@/lib/types';
+import { EXPENSE_CATEGORIES } from '@/lib/types';
 import { generateId } from '@/lib/storage';
 import { getCurrentMonth } from '@/lib/finance-utils';
 import { Target, X } from 'lucide-react';
@@ -94,7 +95,11 @@ export default function BudgetForm({ budget, onSubmit, onCancel, existingCategor
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[field];
+        return newErrors;
+      });
     }
   };
 
